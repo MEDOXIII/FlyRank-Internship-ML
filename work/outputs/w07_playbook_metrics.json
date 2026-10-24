@@ -1,0 +1,466 @@
+{
+  "framing": "Within-window ranking of a current decline proxy (latest 30 days vs the 30 before); decision support for human review; not a forecast, not causal, scores not calibrated.",
+  "w06_reproduction": {
+    "mean model P@20/50/100": {
+      "this_notebook": "[0.76, 0.792, 0.774]",
+      "w06": "[0.76, 0.792, 0.774]"
+    },
+    "mean rule P@20/50/100": {
+      "this_notebook": "[0.53, 0.54, 0.542]",
+      "w06": "[0.53, 0.54, 0.542]"
+    },
+    "mean fold prevalence": {
+      "this_notebook": "0.544",
+      "w06": "0.544"
+    },
+    "mean model ROC AUC": {
+      "this_notebook": "0.655",
+      "w06": "0.655"
+    },
+    "mean model AP": {
+      "this_notebook": "0.663",
+      "w06": "0.663"
+    },
+    "valid-baseline AUC min/max": {
+      "this_notebook": "(0.501, 0.627)",
+      "w06": "(0.501, 0.627)"
+    },
+    "valid-baseline P@50 above subset prevalence in every fold": {
+      "this_notebook": "True",
+      "w06": "True"
+    },
+    "model top-50 largest-client share, folds 2-5 (min/max)": {
+      "this_notebook": "(0.52, 0.66)",
+      "w06": "(0.52, 0.66)"
+    },
+    "rule top-50 largest-client share (min)": {
+      "this_notebook": "0.82",
+      "w06": "0.82"
+    }
+  },
+  "fold_metrics": [
+    {
+      "fold": 1,
+      "test_clients": 1,
+      "prevalence": 0.4902,
+      "model_ROC_AUC": 0.6119,
+      "model_AP": 0.5994,
+      "model_P@20": 0.65,
+      "model_P@50": 0.74,
+      "model_P@100": 0.76,
+      "model_top50_largest_client_share": 1.0,
+      "rule_P@20": 0.45,
+      "rule_P@50": 0.4,
+      "rule_P@100": 0.33,
+      "rule_top50_largest_client_share": 1.0,
+      "valid_prevalence": 0.4919,
+      "valid_model_ROC_AUC": 0.6107,
+      "valid_model_lift@50": 0.2481
+    },
+    {
+      "fold": 2,
+      "test_clients": 7,
+      "prevalence": 0.6454,
+      "model_ROC_AUC": 0.6333,
+      "model_AP": 0.7501,
+      "model_P@20": 0.9,
+      "model_P@50": 0.9,
+      "model_P@100": 0.87,
+      "model_top50_largest_client_share": 0.66,
+      "rule_P@20": 0.5,
+      "rule_P@50": 0.48,
+      "rule_P@100": 0.49,
+      "rule_top50_largest_client_share": 1.0,
+      "valid_prevalence": 0.6656,
+      "valid_model_ROC_AUC": 0.6073,
+      "valid_model_lift@50": 0.2344
+    },
+    {
+      "fold": 3,
+      "test_clients": 8,
+      "prevalence": 0.3795,
+      "model_ROC_AUC": 0.7178,
+      "model_AP": 0.5519,
+      "model_P@20": 0.65,
+      "model_P@50": 0.66,
+      "model_P@100": 0.64,
+      "model_top50_largest_client_share": 0.52,
+      "rule_P@20": 0.35,
+      "rule_P@50": 0.38,
+      "rule_P@100": 0.39,
+      "rule_top50_largest_client_share": 1.0,
+      "valid_prevalence": 0.4926,
+      "valid_model_ROC_AUC": 0.6265,
+      "valid_model_lift@50": 0.2674
+    },
+    {
+      "fold": 4,
+      "test_clients": 8,
+      "prevalence": 0.6222,
+      "model_ROC_AUC": 0.6457,
+      "model_AP": 0.7013,
+      "model_P@20": 0.85,
+      "model_P@50": 0.84,
+      "model_P@100": 0.77,
+      "model_top50_largest_client_share": 0.54,
+      "rule_P@20": 0.5,
+      "rule_P@50": 0.6,
+      "rule_P@100": 0.62,
+      "rule_top50_largest_client_share": 0.82,
+      "valid_prevalence": 0.7373,
+      "valid_model_ROC_AUC": 0.5006,
+      "valid_model_lift@50": 0.1427
+    },
+    {
+      "fold": 5,
+      "test_clients": 8,
+      "prevalence": 0.5847,
+      "model_ROC_AUC": 0.6651,
+      "model_AP": 0.7145,
+      "model_P@20": 0.75,
+      "model_P@50": 0.82,
+      "model_P@100": 0.83,
+      "model_top50_largest_client_share": 0.52,
+      "rule_P@20": 0.85,
+      "rule_P@50": 0.84,
+      "rule_P@100": 0.88,
+      "rule_top50_largest_client_share": 0.94,
+      "valid_prevalence": 0.7033,
+      "valid_model_ROC_AUC": 0.5755,
+      "valid_model_lift@50": 0.1367
+    }
+  ],
+  "limits_evidence": {
+    "pages": 30000,
+    "clients": 32,
+    "in_scope_share": 0.8870666666666667,
+    "model_P@50_by_fold_min_max": [
+      0.66,
+      0.9
+    ],
+    "rule_P@50_by_fold_min_max": [
+      0.38,
+      0.84
+    ],
+    "prevalence_by_fold_min_max": [
+      0.37945419780983836,
+      0.6454370964927587
+    ],
+    "whole_fold_AUC_mean": 0.6547314449280416,
+    "whole_fold_AUC_min_max": [
+      0.6118600974232182,
+      0.7177665202590426
+    ],
+    "valid_baseline_AUC_min_max": [
+      0.5006283161128177,
+      0.6265167579951552
+    ],
+    "valid_baseline_P@50_lift_min_max": [
+      0.13667572653146554,
+      0.26744584837545127
+    ],
+    "per_client_median_AUC": 0.6238404625568987,
+    "per_client_verdict": "SUPPORTED",
+    "per_client_all_in_scope_median_AUC": 0.573707091237579
+  },
+  "scope": {
+    "rule": "impressions_prev_30d > 0 (scope filter only, never a feature)",
+    "in_scope_pages": 26612,
+    "in_scope_share": 0.8870666666666667,
+    "in_scope_proxy_prevalence": 0.6110777093040733
+  },
+  "archetypes": [
+    {
+      "archetype": "LOW_CTR_FOR_POSITION",
+      "pages_in_scope": 4470,
+      "share_of_scope": 0.168,
+      "proxy_decline_rate": 0.6575,
+      "rest_rate": 0.6017,
+      "diff_pp": 5.5787,
+      "clients_eligible": 16,
+      "share_clients_higher": 0.75,
+      "evidence": "HIGHER_THAN_REST",
+      "review_prompt": "Check title, meta description and snippet against search intent and nearby ranking pages."
+    },
+    {
+      "archetype": "STALE_AND_VISIBLE",
+      "pages_in_scope": 7095,
+      "share_of_scope": 0.2666,
+      "proxy_decline_rate": 0.5245,
+      "rest_rate": 0.6426,
+      "diff_pp": -11.8114,
+      "clients_eligible": 12,
+      "share_clients_higher": 0.0833,
+      "evidence": "LOWER_THAN_REST",
+      "review_prompt": "Check freshness: outdated facts, dates, links and sections; decide update, consolidate or leave."
+    },
+    {
+      "archetype": "VISIBLE_OTHER",
+      "pages_in_scope": 5052,
+      "share_of_scope": 0.1898,
+      "proxy_decline_rate": 0.6534,
+      "rest_rate": 0.6012,
+      "diff_pp": 5.2245,
+      "clients_eligible": 10,
+      "share_clients_higher": 0.3,
+      "evidence": "MIXED",
+      "review_prompt": "Quick look only if review capacity remains; no specific hypothesis."
+    },
+    {
+      "archetype": "LOW_VOLUME",
+      "pages_in_scope": 9995,
+      "share_of_scope": 0.3756,
+      "proxy_decline_rate": 0.6304,
+      "rest_rate": 0.5994,
+      "diff_pp": 3.0969,
+      "clients_eligible": 18,
+      "share_clients_higher": 0.7778,
+      "evidence": "MIXED",
+      "review_prompt": "Monitor only; volume is too low for a reliable read."
+    }
+  ],
+  "queue": {
+    "ranked_rows": 16617,
+    "monitor_only_rows": 9995,
+    "clients": 31,
+    "tier_counts": {
+      "P3_backlog": 14737,
+      "MONITOR_ONLY": 9995,
+      "P2_review_next": 1402,
+      "P1_review_first": 478
+    },
+    "review_slots_per_client": 20,
+    "ranking_unit": "within client, ranked pages only (LOW_VOLUME listed as MONITOR_ONLY); no pooled cross-client ranking"
+  },
+  "per_client_validation": {
+    "clients_evaluated": 16,
+    "median_auc": 0.6238404625568987,
+    "auc_q25": 0.6037167823637637,
+    "auc_q75": 0.6297103679266951,
+    "share_auc_above_0.5": 1.0,
+    "median_model_P@20": 0.725,
+    "median_rule_P@20": 0.475,
+    "median_prevalence": 0.5866434048768612,
+    "share_P@20_above_prevalence": 0.9375,
+    "share_P@20_above_rule": 0.9375,
+    "verdict": "SUPPORTED"
+  },
+  "per_client_validation_all_in_scope_sensitivity": {
+    "clients_evaluated": 21,
+    "median_auc": 0.573707091237579,
+    "auc_q25": 0.5357644355559338,
+    "auc_q75": 0.6269253077270092,
+    "share_auc_above_0.5": 0.8571428571428571,
+    "median_model_P@20": 0.8,
+    "median_rule_P@20": 0.45,
+    "median_prevalence": 0.6443719412724307,
+    "share_P@20_above_prevalence": 0.9523809523809523,
+    "share_P@20_above_rule": 0.8571428571428571,
+    "verdict": "SUPPORTED"
+  },
+  "queue_composition": {
+    "P1_caution_shares": {
+      "TOP1PCT_IMPRESSIONS": 0.0041841004184100415,
+      "AGE_UNDER_180D": 0.5983263598326359,
+      "POSITION_MISSING": 0.0,
+      "ZERO_ENGAGEMENT": 0.7782426778242678
+    },
+    "ranked_caution_shares": {
+      "TOP1PCT_IMPRESSIONS": 0.018053800324968405,
+      "AGE_UNDER_180D": 0.40272010591562857,
+      "POSITION_MISSING": 0.0,
+      "ZERO_ENGAGEMENT": 0.5541914906421135
+    },
+    "in_scope_caution_shares": {
+      "TOP1PCT_IMPRESSIONS": 0.01127310987524425,
+      "AGE_UNDER_180D": 0.4011348263941079,
+      "POSITION_MISSING": 0.0003006162633398467,
+      "ZERO_ENGAGEMENT": 0.6932211032616865
+    },
+    "P1_archetype_counts": {
+      "LOW_CTR_FOR_POSITION": 319,
+      "STALE_AND_VISIBLE": 82,
+      "VISIBLE_OTHER": 77
+    }
+  },
+  "human_review": {
+    "p1_rows": 478,
+    "clients_with_p1": 28,
+    "max_p1_rows_per_client": 20,
+    "checks": [
+      {
+        "check": "1. Confirm the decline in the page's analytics",
+        "applies to": "every P1 row",
+        "P1_rows": 478
+      },
+      {
+        "check": "2. Once per client and page type: is engagement tracked, is the page still ramping up",
+        "applies to": "P1 rows flagged ZERO_ENGAGEMENT or AGE_UNDER_180D",
+        "P1_rows": 419
+      },
+      {
+        "check": "2b. Verify tracking first",
+        "applies to": "P1 rows flagged POSITION_MISSING",
+        "P1_rows": 0
+      },
+      {
+        "check": "3. Business-role check (brand, hub, legal, pricing)",
+        "applies to": "every P1 row",
+        "P1_rows": 478
+      },
+      {
+        "check": "4. Second reviewer",
+        "applies to": "P1 rows flagged TOP1PCT_IMPRESSIONS",
+        "P1_rows": 2
+      },
+      {
+        "check": "5. Record decision and note in the queue file",
+        "applies to": "every P1 row",
+        "P1_rows": 478
+      }
+    ]
+  },
+  "decay_refresh": {
+    "above vs at/below each client's median age": {
+      "n_in": 11585,
+      "n_out": 15027,
+      "rate_in": 0.5949072075960293,
+      "rate_out": 0.6235442869501564,
+      "diff_pp": -2.863707935412707,
+      "clients": 19,
+      "share_higher": 0.3684210526315789,
+      "verdict": "MIXED"
+    },
+    "pages older than 365 days vs the rest": {
+      "n_in": 6107,
+      "n_out": 20505,
+      "rate_in": 0.44391681676764366,
+      "rate_out": 0.6608632040965619,
+      "diff_pp": -21.694638732891818,
+      "clients": 7,
+      "share_higher": 0.2857142857142857,
+      "verdict": "LOWER"
+    },
+    "updated within 30 days vs not": {
+      "n_in": 17454,
+      "n_out": 9158,
+      "rate_in": 0.6000343760742524,
+      "rate_out": 0.6321249181043896,
+      "diff_pp": -3.209054203013728,
+      "clients": 12,
+      "share_higher": 0.4166666666666667,
+      "verdict": "MIXED"
+    },
+    "pages younger than 180 days vs the rest": {
+      "n_in": 10675,
+      "n_out": 15937,
+      "rate_in": 0.7047306791569087,
+      "rate_out": 0.5483466147957583,
+      "diff_pp": 15.638406436115037,
+      "clients": 10,
+      "share_higher": 0.8,
+      "verdict": "HIGHER"
+    }
+  },
+  "cost_value": {
+    "placeholders": {
+      "minutes_per_page": 15,
+      "hourly_cost": 40
+    },
+    "rows": [
+      {
+        "review_slots": 20,
+        "method": "model queue",
+        "mean_yield": 0.7281,
+        "review_hours": 5.0,
+        "proxy_declining_pages_found": 14.5625,
+        "pages_found_per_100_hours": 291.25,
+        "cost_per_page_found": 13.7339
+      },
+      {
+        "review_slots": 20,
+        "method": "Week-4 rule",
+        "mean_yield": 0.475,
+        "review_hours": 5.0,
+        "proxy_declining_pages_found": 9.5,
+        "pages_found_per_100_hours": 190.0,
+        "cost_per_page_found": 21.0526
+      },
+      {
+        "review_slots": 20,
+        "method": "random order",
+        "mean_yield": 0.583,
+        "review_hours": 5.0,
+        "proxy_declining_pages_found": 11.6591,
+        "pages_found_per_100_hours": 233.1819,
+        "cost_per_page_found": 17.154
+      },
+      {
+        "review_slots": 50,
+        "method": "model queue",
+        "mean_yield": 0.71,
+        "review_hours": 12.5,
+        "proxy_declining_pages_found": 35.5,
+        "pages_found_per_100_hours": 284.0,
+        "cost_per_page_found": 14.0845
+      },
+      {
+        "review_slots": 50,
+        "method": "Week-4 rule",
+        "mean_yield": 0.4975,
+        "review_hours": 12.5,
+        "proxy_declining_pages_found": 24.875,
+        "pages_found_per_100_hours": 199.0,
+        "cost_per_page_found": 20.1005
+      },
+      {
+        "review_slots": 50,
+        "method": "random order",
+        "mean_yield": 0.583,
+        "review_hours": 12.5,
+        "proxy_declining_pages_found": 29.1477,
+        "pages_found_per_100_hours": 233.1819,
+        "cost_per_page_found": 17.154
+      }
+    ]
+  },
+  "monitoring_reference": {
+    "in_scope_share": 0.8870666666666667,
+    "in_scope_proxy_prevalence": 0.6110777093040733,
+    "missing_share": {
+      "avg_position": 0.04016666666666667,
+      "search_volume": 0.08226666666666667,
+      "word_count": 0.2566333333333333,
+      "scroll_rate": 0.004166666666666667
+    },
+    "median_log_impressions_90d": 6.595780513961311,
+    "per_client_median_AUC": 0.6238404625568987,
+    "per_client_median_P@20": 0.725,
+    "P1_age_under_180d_share": 0.5983263598326359,
+    "P1_zero_engagement_share": 0.7782426778242678,
+    "score_drift": {
+      "method": "per-client PSI of a new batch over the stored quintile edges and shares of that client's reference, same model version",
+      "model_version": "w07_logreg_5fold_oof_v1",
+      "bins": 5,
+      "min_reference_pages": 200,
+      "stored_reference": "per client: bin edges and the reference share in each bin",
+      "reference_source": "out-of-fold scores of the five fold models; no production model is saved",
+      "clients_with_reference": 19,
+      "clients_without_reference": 12,
+      "smoke_test_clients": 17,
+      "smoke_test_null_psi_median": 0.010283135140251542,
+      "smoke_test_null_psi_max": 0.07412275627828253,
+      "smoke_test_shifted_psi_min": 5.152751449191398
+    }
+  },
+  "exports": {
+    "queue_csv": "work/outputs/w07_review_queue.csv",
+    "monitoring_reference_csv": "work/outputs/w07_monitoring_reference_by_client.csv",
+    "metrics_json": "work/outputs/w07_playbook_metrics.json",
+    "figures": [
+      "work/figures/w07_fig_p50_by_fold.png",
+      "work/figures/w07_fig_archetype_decline_rate.png",
+      "work/figures/w07_fig_review_yield.png"
+    ]
+  }
+}
