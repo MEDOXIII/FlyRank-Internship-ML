@@ -1,0 +1,426 @@
+{
+  "data": {
+    "pages": 30000,
+    "clients": 32,
+    "in_scope_pages": 26612,
+    "in_scope_share": 0.8870666666666667,
+    "proxy_rate_all": 0.5420666666666667,
+    "proxy_rate_in_scope": 0.6110777093040733
+  },
+  "final_features": [
+    "search_volume",
+    "competition",
+    "cpc",
+    "word_count",
+    "char_count",
+    "log_impressions_90d",
+    "log_clicks_90d",
+    "log_sessions_90d",
+    "log_ai_sessions_90d",
+    "days_with_impressions",
+    "days_with_sessions",
+    "content_age_days",
+    "days_since_last_update",
+    "ctr",
+    "avg_position",
+    "engagement_rate",
+    "scroll_rate",
+    "ai_traffic_pct",
+    "competition_level",
+    "content_type",
+    "main_intent",
+    "age_tier",
+    "freshness_tier",
+    "word_count_tier",
+    "impression_tier",
+    "position_tier"
+  ],
+  "removed_fields": {
+    "label source": [
+      "trend_direction",
+      "trend_pct"
+    ],
+    "rebuilds the label (100% reconstruction)": [
+      "impressions_last_30d",
+      "clicks_last_30d",
+      "sessions_last_30d",
+      "impressions_prev_30d",
+      "clicks_prev_30d",
+      "sessions_prev_30d"
+    ],
+    "content-generation metadata, not a page signal": [
+      "provider_used",
+      "model_used"
+    ],
+    "double-counts kept rate features": [
+      "pageviews_90d",
+      "users_90d",
+      "engaged_sessions_90d",
+      "scroll_events_90d"
+    ],
+    "duplicate bucket of a kept feature": [
+      "char_count_tier",
+      "age_tier_order"
+    ]
+  },
+  "leakage": [
+    {
+      "test": "clean, random split",
+      "AUC": 0.6920185129208325,
+      "P@50": 0.9,
+      "W03_AUC": 0.709,
+      "W03_P@50": 0.86
+    },
+    {
+      "test": "clean + trend_pct (deliberate leak), random split",
+      "AUC": 0.9990787264905107,
+      "P@50": 1.0,
+      "W03_AUC": 0.9996,
+      "W03_P@50": 1.0
+    },
+    {
+      "test": "90-day-window features only, random split",
+      "AUC": 0.633600485541177,
+      "P@50": 0.82,
+      "W03_AUC": 0.667,
+      "W03_P@50": 0.74
+    },
+    {
+      "test": "static features only, random split",
+      "AUC": 0.6319549876333385,
+      "P@50": 0.86,
+      "W03_AUC": 0.634,
+      "W03_P@50": 0.82
+    },
+    {
+      "test": "clean, client-grouped split",
+      "AUC": 0.6048657030110911,
+      "P@50": 0.62,
+      "W03_AUC": 0.611,
+      "W03_P@50": 0.74
+    }
+  ],
+  "grouped_split_10_seeds": {
+    "AUC_mean": 0.6413054018967255,
+    "AUC_sd": 0.06409475596008263,
+    "P@50_mean": 0.808,
+    "P@50_sd": 0.0681175454637056
+  },
+  "whole_fold_mean": {
+    "prevalence": 0.618144133866784,
+    "model_P@20": 0.7499999999999999,
+    "model_P@50": 0.796,
+    "model_P@100": 0.8,
+    "rule_P@20": 0.53,
+    "rule_P@50": 0.5399999999999999,
+    "rule_P@100": 0.542,
+    "AUC": 0.5950153981248819,
+    "AP": 0.6962639249111865
+  },
+  "per_client_ranked": {
+    "scope": "ranked pages (the queue)",
+    "clients": 16,
+    "AUC_median": 0.6395977303309048,
+    "AUC_q1": 0.6072546594402871,
+    "AUC_q3": 0.6491841331254986,
+    "AUC>0.5": 1.0,
+    "prevalence_median": 0.5866434048768612,
+    "model_P@20": 0.8,
+    "rule_P@20": 0.475,
+    "ctrband_P@20": 0.825,
+    "model>prevalence": 0.9375,
+    "model>rule": 0.875,
+    "model>ctrband": 0.25,
+    "ctrband>prevalence": 0.9375,
+    "verdict": "SUPPORTED"
+  },
+  "per_client_in_scope_sensitivity": {
+    "scope": "all in-scope pages (sensitivity)",
+    "clients": 21,
+    "AUC_median": 0.6098600441965696,
+    "AUC_q1": 0.5743871513102283,
+    "AUC_q3": 0.6448902094101223,
+    "AUC>0.5": 0.9047619047619048,
+    "prevalence_median": 0.6443719412724307,
+    "model_P@20": 0.85,
+    "rule_P@20": 0.45,
+    "ctrband_P@20": 0.75,
+    "model>prevalence": 0.9047619047619048,
+    "model>rule": 0.8571428571428571,
+    "model>ctrband": 0.47619047619047616,
+    "ctrband>prevalence": 0.7619047619047619,
+    "verdict": "SUPPORTED"
+  },
+  "precision_at_k_curve": [
+    {
+      "K": 10,
+      "clients": 16,
+      "model": 0.8,
+      "rule": 0.4,
+      "prevalence": 0.5866434048768612,
+      "model>prevalence": 0.9375
+    },
+    {
+      "K": 20,
+      "clients": 16,
+      "model": 0.8,
+      "rule": 0.475,
+      "prevalence": 0.5866434048768612,
+      "model>prevalence": 0.9375
+    },
+    {
+      "K": 30,
+      "clients": 16,
+      "model": 0.8,
+      "rule": 0.4666666666666667,
+      "prevalence": 0.5866434048768612,
+      "model>prevalence": 0.9375
+    },
+    {
+      "K": 50,
+      "clients": 16,
+      "model": 0.81,
+      "rule": 0.49,
+      "prevalence": 0.5866434048768612,
+      "model>prevalence": 1.0
+    },
+    {
+      "K": 75,
+      "clients": 13,
+      "model": 0.8,
+      "rule": 0.5066666666666667,
+      "prevalence": 0.6222664015904572,
+      "model>prevalence": 1.0
+    }
+  ],
+  "c1_boundary": "the model's median Precision@K exceeds prevalence at every depth shown (K = 10 to 75); say that deeper depths were not tested",
+  "archetypes": {
+    "LOW_CTR_FOR_POSITION": {
+      "priority": 1,
+      "pages": 4470,
+      "proxy_rate": 0.6574944071588367,
+      "rest_rate": 0.601707162857917,
+      "diff_pp": 5.578724430091963,
+      "clients_eligible": 16,
+      "share_clients_higher": 0.75,
+      "evidence": "HIGHER_THAN_REST"
+    },
+    "VISIBLE_OTHER": {
+      "priority": 2,
+      "pages": 5052,
+      "proxy_rate": 0.6534045922406968,
+      "rest_rate": 0.6011595547309833,
+      "diff_pp": 5.224503750971355,
+      "clients_eligible": 10,
+      "share_clients_higher": 0.3,
+      "evidence": "MIXED"
+    },
+    "STALE_AND_VISIBLE": {
+      "priority": 3,
+      "pages": 7095,
+      "proxy_rate": 0.5244538407329105,
+      "rest_rate": 0.6425680176256596,
+      "diff_pp": -11.811417689274917,
+      "clients_eligible": 12,
+      "share_clients_higher": 0.08333333333333333,
+      "evidence": "LOWER_THAN_REST"
+    },
+    "LOW_VOLUME": {
+      "priority": 4,
+      "pages": 9995,
+      "proxy_rate": 0.6304152076038019,
+      "rest_rate": 0.5994463501233677,
+      "diff_pp": 3.096885748043421,
+      "clients_eligible": 18,
+      "share_clients_higher": 0.7777777777777778,
+      "evidence": "MIXED"
+    }
+  },
+  "no_go_list": [
+    {
+      "policy": "Ranks are per client; no pooled cross-client ranking",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "assert on the rank column (this cell)"
+    },
+    {
+      "policy": "Low-volume and out-of-scope pages get no rank",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "assert on the ranked frame (this cell)"
+    },
+    {
+      "policy": "A page with no previous-30-day impressions is never labelled down",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "assert (Section 2 cell)"
+    },
+    {
+      "policy": "Label-source columns never enter the features",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "assert (Section 3 cell)"
+    },
+    {
+      "policy": "Only in-scope pages are used to train the model",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "assert in the fold loop (Section 3 cell)"
+    },
+    {
+      "policy": "No client crosses train and test",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "assert in the fold loop (Section 3 cell)"
+    },
+    {
+      "policy": "Rows of unvalidated clients carry UNVALIDATED_CLIENT",
+      "status": "ASSERTED_IN_NOTEBOOK",
+      "where": "flag uses the same size rule as the validation"
+    },
+    {
+      "policy": "Identifiers are pseudonymous; no names or URLs in outputs",
+      "status": "ENFORCED_UPSTREAM",
+      "where": "source release and data contract; the notebook prints no ids"
+    },
+    {
+      "policy": "Row-level queue and predictions stay out of git",
+      "status": "ENFORCED_UPSTREAM",
+      "where": "repo ignore rules; the notebook writes aggregates only"
+    },
+    {
+      "policy": "No automatic publish, edit, redirect, consolidate or delete from a queue row",
+      "status": "PROPOSED",
+      "where": "no integration exists here; a deployment needs an approval gate"
+    },
+    {
+      "policy": "The score is never read as a probability or an expected gain; no 'will recover' or 'caused' wording",
+      "status": "PROPOSED",
+      "where": "wording policy for reviewers and reports"
+    },
+    {
+      "policy": "No retraining or threshold change without a person reading the monitoring report",
+      "status": "PROPOSED",
+      "where": "no retraining code exists here"
+    },
+    {
+      "policy": "Unvalidated clients are reviewed manually until validated",
+      "status": "PROPOSED",
+      "where": "needs a deployment-time rule"
+    }
+  ],
+  "monitoring": [
+    {
+      "clock": "PRE_RELEASE",
+      "trigger": "Input drift: missing share of a key input rises by more than 5 points",
+      "status": "PROPOSED"
+    },
+    {
+      "clock": "PRE_RELEASE",
+      "trigger": "Score drift: PSI above 0.2 for a client against its own reference",
+      "status": "HARNESS_IN_W07_NOTEBOOK_ONLY"
+    },
+    {
+      "clock": "PRE_RELEASE",
+      "trigger": "Scope drift: share of pages with previous-30-day impressions moves by more than 10 points",
+      "status": "PROPOSED"
+    },
+    {
+      "clock": "PRE_RELEASE",
+      "trigger": "Queue composition: share of flagged P1 rows moves by more than 10 points",
+      "status": "PROPOSED"
+    },
+    {
+      "clock": "PRE_RELEASE",
+      "trigger": "New client, schema change or retrained model: re-run leakage audit and grouped validation",
+      "status": "PROPOSED"
+    },
+    {
+      "clock": "POST_LABEL",
+      "trigger": "Reviewer rejection: above 50% of P1 rows for two consecutive cycles",
+      "status": "PROPOSED"
+    },
+    {
+      "clock": "POST_LABEL",
+      "trigger": "Lost lift: no within-client lift for two consecutive cycles",
+      "status": "PROPOSED"
+    },
+    {
+      "clock": "BOTH",
+      "trigger": "Scheduled review every quarter",
+      "status": "PROPOSED"
+    }
+  ],
+  "yield_table_illustrative": [
+    {
+      "review_slots": 20,
+      "method": "model queue",
+      "mean_yield": 0.7406250000000001,
+      "review_hours": 5.0,
+      "proxy_declining_found": 14.812500000000002,
+      "cost_per_page_found": 13.502109704641349
+    },
+    {
+      "review_slots": 20,
+      "method": "Week-4 rule",
+      "mean_yield": 0.475,
+      "review_hours": 5.0,
+      "proxy_declining_found": 9.5,
+      "cost_per_page_found": 21.05263157894737
+    },
+    {
+      "review_slots": 20,
+      "method": "random order",
+      "mean_yield": 0.5829546723266363,
+      "review_hours": 5.0,
+      "proxy_declining_found": 11.659093446532726,
+      "cost_per_page_found": 17.15399236803249
+    },
+    {
+      "review_slots": 50,
+      "method": "model queue",
+      "mean_yield": 0.72375,
+      "review_hours": 12.5,
+      "proxy_declining_found": 36.1875,
+      "cost_per_page_found": 13.81692573402418
+    },
+    {
+      "review_slots": 50,
+      "method": "Week-4 rule",
+      "mean_yield": 0.4975,
+      "review_hours": 12.5,
+      "proxy_declining_found": 24.875,
+      "cost_per_page_found": 20.100502512562816
+    },
+    {
+      "review_slots": 50,
+      "method": "random order",
+      "mean_yield": 0.5829546723266363,
+      "review_hours": 12.5,
+      "proxy_declining_found": 29.147733616331816,
+      "cost_per_page_found": 17.15399236803249
+    }
+  ],
+  "reproducibility": {
+    "python": "3.11.0",
+    "numpy": "2.4.6",
+    "pandas": "3.0.3",
+    "scikit-learn": "1.9.0",
+    "matplotlib": "3.11.1",
+    "data_file": "content_refresh_anonymized.csv",
+    "data_rows": 30000,
+    "data_columns": 44,
+    "data_sha256_prefix": "99a2bdada7d15ce0",
+    "seeds": {
+      "split_and_model": 42,
+      "grouped_repeats": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9
+      ],
+      "GroupKFold": "deterministic, no seed"
+    }
+  },
+  "labels": "current decline proxy; same-window ranking, not a future forecast or causal evidence; decision support; not calibrated"
+}
